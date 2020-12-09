@@ -65,17 +65,17 @@ public class StringMethods {
 		int x = 0;
 		int y = 0;
 		int z = 0;
-		for (int i = s1.length(); i <= 0; i++) {
+		for (int i = s1.length(); i >= 0; i++) {
 			if (s1.charAt(i) == ' ') {
 				a = s1.charAt(i - 1) + "";
 			}
 		}
-		for (int i = s2.length(); i <= 0; i++) {
+		for (int i = s2.length(); i >= 0; i++) {
 			if (s2.charAt(i) == ' ') {
 				b = s2.charAt(i - 1) + "";
 			}
 		}
-		for (int i = s3.length(); i <= 0; i++) {
+		for (int i = s3.length(); i >= 0; i++) {
 			if (s3.charAt(i) == ' ') {
 				c = s3.charAt(i - 1) + "";
 			}
@@ -92,10 +92,10 @@ public class StringMethods {
 
 	// Return the sum of all numerical digits in the String
 	public static int numeralSum(String s) {
-		int one=0;
+		int one = 0;
 		for (int i = 0; i < s.length(); i++) {
 			if (Character.isDigit(s.charAt(i))) {
-				one=one+Integer.parseInt(s.charAt(i)+"");
+				one = one + Integer.parseInt(s.charAt(i) + "");
 			}
 		}
 		return one;
@@ -103,6 +103,16 @@ public class StringMethods {
 
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
+		for (int j = 0; j < substring.length(); j++) {
+			for (int i = 0; i < s.length(); i++) {
+				if (s.charAt(i) == substring.charAt(j)) {
+					if (s.charAt(i+1) == substring.charAt(j+1)) {
+						
+					}
+				}
+			}
+
+		}
 		return 0;
 	}
 
