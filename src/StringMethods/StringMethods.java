@@ -103,17 +103,22 @@ public class StringMethods {
 
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
-		for (int j = 0; j < substring.length(); j++) {
-			for (int i = 0; i < s.length(); i++) {
-				if (s.charAt(i) == substring.charAt(j)) {
-					if (s.charAt(i+1) == substring.charAt(j+1)) {
-						
-					}
+		int second = 0;
+		int total = 0;
+		for (int i = 0; i <= s.length() - substring.length(); i++) {
+			second = 0;
+			for (int j = 0; j < substring.length(); j++) {
+				if (s.charAt(i + j) == substring.charAt(j)) {
+					second++;
 				}
-			}
 
+			}
+			if (second == substring.length()) {
+				total++;
+			}
 		}
-		return 0;
+
+		return total;
 	}
 
 	// Call Utitilities.encrypt to encrypt String s
