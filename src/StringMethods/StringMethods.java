@@ -65,19 +65,27 @@ public class StringMethods {
 		int x = 0;
 		int y = 0;
 		int z = 0;
-		for (int i = s1.length(); i >= 0; i++) {
-			if (s1.charAt(i) == ' ') {
-				a = s1.charAt(i - 1) + "";
+		for (int i = s1.length() - 1; i >= 0; i--) {
+			if (i != 0) {
+
+				if (s1.charAt(i) == ' ') {
+					a = s1.charAt(i - 1) + "";
+				}
 			}
 		}
-		for (int i = s2.length(); i >= 0; i++) {
-			if (s2.charAt(i) == ' ') {
-				b = s2.charAt(i - 1) + "";
+		for (int i = s2.length() - 1; i >= 0; i--) {
+			if (i != 0) {
+
+				if (s2.charAt(i) == ' ') {
+					b = s2.charAt(i - 1) + "";
+				}
 			}
 		}
-		for (int i = s3.length(); i >= 0; i++) {
-			if (s3.charAt(i) == ' ') {
-				c = s3.charAt(i - 1) + "";
+		for (int i = s3.length() - 1; i >= 0; i--) {
+			if (i != 0) {
+				if (s3.charAt(i) == ' ') {
+					c = s3.charAt(i - 1) + "";
+				}
 			}
 		}
 		if (a.compareToIgnoreCase(b) == -1 && a.compareToIgnoreCase(c) == -1) {
@@ -123,25 +131,70 @@ public class StringMethods {
 
 	// Call Utitilities.encrypt to encrypt String s
 	public static String encrypt(String s, char key) {
-		return null;
+		String key1 = key + "";
+
+		return Utilities.encrypt(s.getBytes(), key1.getBytes()[0]);
+
 	}
 
 	// Call Utilities.decrypt to decrypt the cyphertext
 	public static String decrypt(String s, char key) {
-		return null;
+		String key1 = key + "";
+
+		return Utilities.decrypt(s, key1.getBytes()[0]);
 	}
 
 	// Return the number of words in String s that end with String substring
 	// You can assume there are no punctuation marks between words
 	public static int wordsEndsWithSubstring(String s, String substring) {
-		return 0;
+		int sb = 0;
+		int times = 0;
+		for (int i = s.length() - 1; i >= 0; i--) {
+			if (s.charAt(i) == ' ' || i == s.length() - 1) {
+				sb = 0;
+				for (int j = 0; j < substring.length(); j++) {
+					if (i >= substring.length() && s.charAt(i - substring.length() + j) == substring.charAt(j)) {
+						sb++;
+					}
+					if (sb == substring.length()) {
+						times++;
+
+					}
+				}
+			}
+		}
+
+		return times;
 	}
 
 	// Given String s, return the number of characters between the first occurrence
 	// of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
-		return 0;
+		int first = 0;
+		int last=0;
+		int pos1=0;
+		int pos2=0;
+		for (int i = 0; i < s.length(); i++) {
+			if (i <= substring.length() && s.charAt(i) == substring.charAt(i)) {
+				first++;
+				if (first == substring.length()) {
+pos1=i;
+				}
+			}
+
+		}
+		for (int j = s.length() - 1; j >= 0; j--) {
+			if (j >= substring.length() && s.charAt(j) == substring.charAt(j)) {
+				last++;
+				if (last == substring.length()) {
+pos2=j;
+				}
+			}
+
+		}
+		
+		return pos2-pos1;
 	}
 
 	// Return true if String s is a palindrome
