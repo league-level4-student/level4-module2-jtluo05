@@ -171,37 +171,35 @@ public class StringMethods {
 	// of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
-		int first = 0;
-		int last=0;
-		int pos1=0;
-		int pos2=0;
-		for (int i = 0; i < s.length(); i++) {
-			if (i <= substring.length() && s.charAt(i) == substring.charAt(i)) {
-				first++;
-				if (first == substring.length()) {
-pos1=i;
-				}
-			}
+		int pos1 = s.indexOf(substring) + substring.length();
+		int pos2 = s.lastIndexOf(substring);
 
-		}
-		for (int j = s.length() - 1; j >= 0; j--) {
-			if (j >= substring.length() && s.charAt(j) == substring.charAt(j)) {
-				last++;
-				if (last == substring.length()) {
-pos2=j;
-				}
-			}
-
-		}
-		
-		return pos2-pos1;
+		return pos2 - pos1;
 	}
 
 	// Return true if String s is a palindrome
 	// palindromes are words or phrases are read the same forward as backward.
 	// HINT: ignore/remove all punctuation and spaces in the String
 	public static boolean palindrome(String s) {
-		return true;
+
+		boolean tof = false;
+		String real = "";
+		for (int i = 0; i < s.length(); i++) {
+
+			if (Character.isLetter(s.charAt(i))) {
+				real += Character.toLowerCase(s.charAt(i));
+			}
+		}
+
+		for (int i = 0; i < real.length() / 2; i++) {
+			if (real.charAt(i) == real.charAt(real.length() - 1 - i)) {
+				tof = true;
+			} else {
+				tof = false;
+				break;
+			}
+		}
+		return tof;
 	}
 
 }
